@@ -1,0 +1,61 @@
+<?php 
+error_reporting(0);
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+ include 'connect.php';
+
+$Name= $_POST['Name'];
+$Specialization=$_POST['Specialization'];
+$Phonenumber=$_POST['Phonenumber'];
+
+      $sql="insert into `deitician`(Name,Specialization,Phonenumber)values('$Name','$Specialization','$Phonenumber')";  
+      $result=mysqli_query($con,$sql);
+      if($result){
+                   //echo" signup sucessful";
+                   echo"data inserted sucessfully";
+         }
+            else{
+                      die(mysqli_error($con));
+                }
+     }
+  
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    .main{
+      position: relative;
+      left:20rem;
+       /* flex-direction:row-reverse; */
+    }
+   .card{
+      background-color:pink;
+       padding: 20px;width:300px;
+
+       
+       /* position:center; */
+    }
+  </style>
+  </head>
+  <body>
+<div class="main">
+<div class="card" >
+   <h2>Dietitian Registration</h2>
+    <form action="" method="post"> 
+      <label>Name</label>
+      <input type="text" name="Name">
+      <br><br>
+      <label>Specialization</label>
+      <input type="text" name="Specialization">
+      <br><br>
+      <label>Phonenumber</label>
+      <input type="tel" name="Phonenumber">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  
+</div>
+  </body>
+</html>

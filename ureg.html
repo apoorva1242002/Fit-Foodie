@@ -1,0 +1,144 @@
+<?php 
+$succes=0;
+$user=0;
+error_reporting(0);
+if($_SERVER['REQUEST_METHOD']=='POST'){
+ include 'connect.php';
+
+
+$Name = $_POST['Name'];
+$Email=$_POST['Email'];
+$Age=$_POST['Age'];
+$Issue=$_POST['Issue'];
+$Weight=$_POST['Weight'];
+$Height=$_POST['Height'];
+$Password = $_POST['Password'];
+
+   $sql="select * from `users`where Name='$Name'";
+   $result=mysqli_query($con,$sql);
+   if($result){
+    $num=mysqli_num_rows($result);
+    if($num>0){
+      //echo"user already exist";
+      $user=1;
+    }
+    else{
+
+      $sql="insert into `users`(Name,Email,Age,Issue,Weight,Height,Password)values('$Name','$Email','$Age','$Issue','$Weight','$Height','$Password')";  
+      $result=mysqli_query($con,$sql);
+      if($result){
+                   //echo" signup sucessful";
+                   $succes=1;
+         }
+            else{
+                      die(mysqli_error($con));
+                }
+      }
+    }
+  }
+  
+?>
+<html>
+  <head>
+    <title>registration form</title>
+    <link rel="stylesheet" type="text/css" href="ureg.css" />
+    <style>
+    * {
+    padding: 0;
+    margin: 0;
+    color: #303b01;
+  }
+  body {
+    background-image: url(./register\image.png);
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+  }
+  .registration-form {
+    background-color: rgb(255 219 128 / 79%);
+    border-radius: 2rem;
+    box-shadow: 1px 1px 20px 7px #666261;
+    padding: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    border: 5px;
+  }
+  .registration-form h1 {
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 0;
+  }
+  .registration-form p {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+  .registration-form input {
+    font-size: 16px;
+    padding: 15px 10px;
+    width: 100%;
+    border-color: black;
+    border-radius: 5px;
+    outline: none;
+  }
+  .registration-form button {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 10px 15px;
+    width: 50%;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .main {
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+  }
+  </style>
+  </head>
+
+  <body>
+    <?php
+    if($succes){
+      echo'<div class="alert alert-succes 
+      alert-dismissible fade show" role="alert">
+      <strong> succes</strong> you are sucessfully  logged in. 
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+      <span aria-hidden ="true"> &times; </span> </button>
+      </div>';
+    }
+    ?>
+    <div class="registration-form">
+      <h1>registration form</h1>
+      <form action="ureg.php" method="post">
+        <div class="main">
+          <div>
+            <p>Name</p>
+            <input type="text" name="Name" placeholder="Name" />
+            <p>Email</p>
+            <input type="text" name="Email" placeholder="Email" />
+            <p>Age</p>
+            <input type="text" name="Age" placeholder="Age" />
+            <p>Issue</p>
+            <input type="text" name="Issue" placeholder="Issue" />
+          </div>
+          <div>
+            <p>Weight</p>
+            <input type="text" name="Weight" placeholder="Weight" />
+            <p>Height</p>
+            <input type="text" name="Height" placeholder="Height" />
+            <p>Password</p>
+            <input type="text" name="Password" placeholder="Password"
+            />
+          </div>
+        </div>
+        <center><button type="submit">register</button></center>
+      </form>
+    </div>
+  </body>
+</html>

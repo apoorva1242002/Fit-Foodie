@@ -1,0 +1,101 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['Name'])){
+        header('location:ulogin.php');
+    }
+
+
+?>
+<html>
+    <head>
+        <title>home page</title>
+        <link rel="stylesheet" href="homepage.css">
+        </head>
+        <body>
+            <div class="card-main">
+            <h1> FIT FOODIE</h1>
+            <h2> MODERN WEBSITE FOR  MODERN PEOPLE</h2> 
+            <br/></div>
+            <hr>
+            <div><center>
+            <a href="ureg.html">register</a>
+            <a href="about.html">about us</a>
+            <a href="d3.html">deitcian</a>
+            <a href="ulogin.html">login</a> 
+        <a href="logout.html"> Log out</a></center><br/>
+           
+            <h2> WELCOME 
+                <?php
+                   echo $_SESSION['Name'];
+                ?>
+                   </h2>
+
+                   <div id="google_translate_element"></div>
+                      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        <script>
+                            function googleTranslateElementInit(){
+                                new.google.translate.translateElement(
+                                    
+                                    {pageLanguage:'en'},
+                                    'google_translate_element'
+                                 );
+                            }
+                      </script>                                             
+            <p> YOUR FAITH  FOR WELLBEING<p></br>
+                <p> Vidya means right knowledge, clarity and inner wisdom.<br/>
+                    And I believe,like wisdom,wellness starts from within.</p>
+                    <p>Vidya Living is where I share,teach inspire holistic living<br>
+                         fusing the ancient wisdom of Ayurveda and Yoga<br/>to live a well-nourished life.
+                        </p>
+                    <br/>
+                
+                    <div class="card-1">
+                        
+                            <div class="card-2">
+                            <image src="./asset/img6.jpg"style=" width:250px"></image>
+                            </div><br/>
+                            <div class="card-2">
+                                <image src="./asset/img23.jpg.jpg" style="width:250px"></image>
+                                
+                                </div>
+                                </div><br/>
+                                <div class="card-3">
+                                    <p> GO LIVE WITH OUR DOCTOR</p>
+                                    <P>Registered dietitians work with patients who are struggling to<br/> lose weightor need to improve thier diet awith other health <br/>
+                                    related reasons such as following managing dibities<br/>
+                                    they work with patience to understand thier particukar needs<br/>
+                                    and challenges and design meal plan accordingly 
+                                    <br/>
+                                </P>
+                                <a href="free.html">
+                        <button class="ffd">Go live</button></a>
+                                </div>
+                                <p>EXPLORE THE BLOG</p><br/>
+                                <p>Holistic living through the tense of food,breath,movement,meditation and ritual read the latest pn the blog</p>
+                               <div id="banner">
+                                <div class="inline-block">
+                                    <img src="./asset/images.jpg"style="width:250px"></image>
+                                    <p>live hydrated</p>
+                                    </div>
+                                    <div class="inline-block">
+                                        <img src="./asset/img16.jpg.jpg"style="width:250px"></image>
+                                        <p>breathing essential</p>
+                                    </div>
+                                    <div class="inline-block">
+                                        <img src="./asset/img19.jpg.jpg"style="width:250px" ></image>
+                                        <p>nourishing meals</p>
+                                    </div>
+                                    <div class="inline-block">
+                                        <img src="./asset/img17.jpg.jpg "style="width:250px"></image>
+                                        <p>ayurvedic living</p>
+                                    </div>
+                                 <div class="card-b">
+                                    <p> live life to its fullest</p>
+                                    <p>when you learn the language of your body<br/>
+                                        your experience of life is limitless<br/>
+                                        "when diet is wrong medicine is of no use<br/>
+                                        when deit is correct ,medicine is of no need</p>
+
+                                        </div> 
+                    </body>
+            </html>

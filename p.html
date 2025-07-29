@@ -1,0 +1,70 @@
+<?php
+    $connection=mysqli_connect("localhost","root","");
+    $db=mysqli_select_db( $connection,'fitfoodie');
+    
+    if(isset($_POST['upload'])){
+        $file=addslashes(file_get_contents($_FILES["image"]["temp_name"]));
+        $amount=$_POST['amount'];
+        $date=$_POST['date'];
+
+        $query="INSERT INTO `payment`('image','amount','date') VALUES ('$file','$amount','$date')";
+        $query_run= mysqli_query($connection, $query);
+
+        if($query_run)
+        {
+            echo'<script text="text/javascrpt"> alert("payment sucessful") </script>';
+        }
+        else{
+            
+            echo'<script text="text/javascrpt"> alert("payment unsucessful") </script>';
+        }
+        
+    }
+    ?>
+<html>
+    <head>
+        <title> PAYMENT</title>
+        <style>
+            .card{
+               
+                padding: 0 16px;
+                
+
+            }
+            .card1{
+                
+                display: flex;
+                flex-direction: column;
+                align-content:center;
+                flex-wrap: wrap;
+                font-size:85%;
+                box-shadow: black;
+                 background-color:pink;
+                 width:50%;
+
+                }
+
+            </style>
+        </head>
+        <body>
+            <div class="card">
+            <div class="card1">
+                
+                    <h1 >PAYMENT </h1>
+                <img  src="./asset/adqr.jpg.jpg"height="30%"width="30%">
+                <p><b>please share the screenshot of your trancation</b></p>
+                <form action="" method="post'enctype="multipart/form-data">
+                <h2> <b>IMAGE :</b>
+                    <input type="file" name="image" id="image"required></h2><br>
+                <h2><b>amount :</b>
+                <input type="amount" name="" required ></h2> <br>
+                <h2><b>date :</b>
+                <input type="date" name="" required ></h2><br><br>
+
+                <a href="token2.html">
+                    <button type="upload">submit</button></a>
+            </form>
+            </div>
+            </div>  
+            </body>
+    </html>

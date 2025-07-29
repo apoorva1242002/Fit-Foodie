@@ -1,0 +1,79 @@
+<html>
+<head>
+	<style type="text/css">
+		#chatbox {
+  width: 500px;
+  height: 300px;
+  background-color: #b3ffb3;
+  border: 5px solid #555;
+  padding: 10px;
+}
+
+.message-box {
+  padding: 5px;
+}
+
+.message-sender {
+  font-weight: bold;
+}
+
+#chat-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+#message-input {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+#send-button {
+  padding: 5px 10px;
+}
+
+	</style>
+</head>
+<body>
+  <h1> CHATTING...</h1>
+	<div id="chatbox">
+  <div id="chat-messages">
+    <div class="message-box">
+      <div class="message-sender">User 1:</div>
+      <div class="message-text">Hello, how are you?</div>
+    </div>
+    <div class="message-box">
+      <div class="message-sender">User 2:</div>
+      <div class="message-text">I'm good, thank you. How about you?</div>
+    </div>
+  </div>
+  <div id="chat-input">
+    <input type="text" id="message-input" placeholder="Type your message here">
+    <button id="send-button" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<script type="text/javascript">
+	function sendMessage() {
+  var messageInput = document.getElementById("message-input");
+  var message = messageInput.value;
+  var messagesDiv = document.getElementById("chat-messages");
+
+  var messageBox = document.createElement("div");
+  messageBox.classList.add("message-box");
+
+  var sender = document.createElement("div");
+  sender.classList.add("message-sender");
+  sender.innerHTML = "You:";
+
+  var messageText = document.createElement("div");
+  messageText.classList.add("message-text");
+  messageText.innerHTML = message;
+
+  messageBox.appendChild(sender);
+  messageBox.appendChild(messageText);
+  messagesDiv.appendChild(messageBox);
+
+  messageInput.value = "";
+}
+</script>
+</body>
+</html>
